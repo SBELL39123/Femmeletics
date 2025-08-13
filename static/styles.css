@@ -1,0 +1,336 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+    line-height: 1.6;
+    padding-top: 80px;
+
+}
+
+.navbar{
+    background-color: #d6336c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Make logo and text sit side by side */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+    font-size: 1.57em;
+    font-weight: bold;
+}
+
+/* Resize the logo */
+.logo {
+    height: 40px; /* adjust as needed */
+    width: auto;
+}
+
+/* Optional: tweak text alignment if needed */
+.brand-text {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 15px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+}
+
+.nav-links li a {
+    color: white; 
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links li a:hover{
+    text-decoration: underline;
+}
+
+
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown menu hidden by default */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #d6336c;
+    min-width: 180px;
+    z-index: 1000;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown item styles */
+.dropdown-menu li {
+    display: block;
+    padding: 10px 15px;
+}
+
+.dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #b82a58;
+}
+
+
+
+
+
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+
+}
+
+.search-form input {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-form button {
+    background-color: white;
+    color: #d6336c;
+    border: none; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.main-container{
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.featured-news{
+    flex: 3;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+}
+
+.featured-news h2{
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    
+
+}
+
+
+.news-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.news-card h3{
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+.news-card a{
+    font-weight: bold;
+    color: #d6336c;
+    text-decoration: none;
+}
+
+.news-card a:hover {
+    text-decoration: underline;
+}
+
+
+
+.sidebar {
+    flex: 1;
+    background-color: #f2f2f7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.7rem;
+    max-height: 900px;
+    overflow-y: auto;
+
+
+}
+
+.sidebar h3{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a{
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.sidebar ul li a:hover{
+    color: #d6336c;
+    text-decoration: underline;
+    transform: translateX(4px);
+
+}
+
+.live-updates{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.live-card{
+    background: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #d6336c;
+    border-radius: 4px;
+}
+
+.live-card a {
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+    font-size: 0.9rem
+}
+
+.live-card a:hover {
+    text-decoration: underline;
+}
+
+.live-card small{
+    color: #666;
+    font-size:0.7em;
+
+}
+
+
+.social-media-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.social-media-list li {
+    margin-bottom: 10px;
+}
+
+.social-media-list li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-media-list li a:hover {
+    color: #d6336c;
+    text-decoration: underline;
+    text-shadow: 0 0 5px rgba(214, 51, 108, 0.4);
+}
+
+
+
+
+footer{
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 0.9em;
+    background-color: #fff;
+    margin-top: 40px;
+
+}
+
+
+/*Responsive*/
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+
+    .navbar {
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+}

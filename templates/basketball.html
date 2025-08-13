@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Femmeletics-She Scores.</title>
+  <link rel="icon" type="image/x-icon" href="static/femmeleticsfavicon.ico">
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+
+
+
+    <body>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="{{ url_for('static', filename='femmeleticslogo.png') }}" alt="Logo" class="logo">
+                <span class="brand-text">Femmeletics</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">🏠 Home</a></li>
+                <li><a href="{{ url_for('basketball') }}">🏀 Basketball</a></li>
+                <li><a href="{{ url_for('soccer') }}">⚽ Soccer</a></li>
+                <li><a href="{{ url_for('softball') }}">🥎 Softball</a></li>
+                <li><a href="{{ url_for('tennis') }}">🎾 Tennis</a></li>
+                <li><a href="{{ url_for('track') }}">🏃‍♀️ Track</a></li>
+                <li class="dropdown">
+                    <a href="#">➕ More Sports</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/cricket">🏏 Cricket</a></li>
+                      <li><a href="/cycling">🚴 Cycling</a></li>
+                      <li><a href="/fencing">🤺 Fencing</a></li>
+                      <li><a href="/golf">🏌️ Golf</a></li>
+                      <li><a href="/gymnastics">🤸 Gymnastics</a></li>
+                      <li><a href="/hockey">🏑 Hockey</a></li>
+                      <li><a href="/lacrosse">🥍 Lacrosse</a></li>
+                      <li><a href="/rugby">🏉 Rugby</a></li>
+                      <li><a href="/surf">🏄 Surf</a></li>
+                      <li><a href="/swimming">🏊 Swimming</a></li>
+                      <li><a href="/volleyball">🏐 Volleyball</a></li>
+                    </ul>
+                  </li>
+            </ul>
+            <form action="/search" method="GET" class ="search-form">
+                <input type="text" name="query" placeholder="Search..."/>
+                <button type="submit"><i class="fas fa-search"></i></button>
+
+
+
+            </form>
+            </nav>
+
+
+            <!--MAIN-->
+            <main class="main-container">
+
+
+                <section class="featured-news">
+                <h2>Latest Women's Basketball News</h2>
+                
+                <div class="news-grid">
+                    {% for article in main_articles %}
+                    <div class="news-card">
+                        {% if article.urlToImage %}
+                        <img src="{{ article.urlToImage or url_for('static', filename='placeholder.jpg') }}" alt="{{ article.title }}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='placeholder.jpg') }}" alt="Image not available for '{{ article.title or article.source.name }}'">
+                        {% endif %}
+                        <a href="{{ article.url }}" target="_blank"><h3>{{ article.title }}</h3></a>
+                        <p>{{ article.description or '' }}</p>
+                        {% if article.publishedAt %}
+                        <small>{{ article.publishedAt[:16].replace("T", " ") }}</small>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <p> No current updates.</p>
+                    {% endfor %}
+                </div>
+                </section>
+
+
+                <aside class="sidebar">
+                    <h3>More Updates</h3>
+                    <div class="live-updates">
+                        {% for article in sidebar_articles %}
+                        <div class="live-card">
+                            <a href="{{ article.url }}" target="_blank">{{ article.title }}</a>
+                            <small>{{ article.publishedAt[:16].replace("T", " ")}}</small>
+                        
+                        </div>
+
+                        {% endfor %}
+                    </div>
+
+                 
+
+                    <h3><i class="fas fa-ticket-alt"></i> Game Tickets</h3>
+                    <ul>
+                        {% for ticket in ticket_sites %}
+                        <li><a href ="{{ ticket.url }}" target="_blank">🎟️{{ ticket.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3><i class="fas fa-shopping-bag"></i>Merchandise</h3>
+                    <ul>
+                        {% for merch in merch_sites %}
+                        <li><a href ="{{ merch.url }}" target="_blank">🛍️{{ merch.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <h3>Social Media</h3>
+                    <ul class="social-media-list">
+                        {% for social in social_media_sites %}
+                            <li>
+                                <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer">
+                                    {% if 'twitter' in social.url or 'x.com' in social.url %}
+                                        <i class="fab fa-x-twitter"></i>
+                                    {% elif 'instagram' in social.url %}
+                                        <i class="fab fa-instagram"></i>
+                                    {% endif %}
+                                    {{ social.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+
+
+
+                </aside>
+
+            </main>
+
+            <footer>
+                <p>&copy; 2025 Femmeletics | All rights reserved.</p>
+            </footer>
+
+        </body>
+
+
+</html>
